@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server: 
+  port: 5000
+spring:
+  profiles: dev #开发环境
+  application:
+    name: USER-PROVIDER
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver1000:1000/eureka/,http://eurekaserver1001:1001/eureka/
+  instance:
+    prefer-ip-address: true #显示客户端真实ip
+---
+server: 
+  port: 5002
+spring:
+  profiles: test #测试环境
+  application:
+    name: USER-PROVIDER
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver1000:1000/eureka/,http://eurekaserver1001:1001/eureka/
+  instance:
+    prefer-ip-address: true #显示客户端真实ip
